@@ -1,0 +1,54 @@
+.kanban-card {
+  border: 1px solid var(--border-card-color);
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "title id"
+    "progress progress"
+    "author time";
+  gap: 8px;
+}
+
+.card-title {
+  grid-area: title;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.card-id {
+  grid-area: id;
+  justify-self: end;
+  padding: 4px 8px;
+}
+
+.card-progress {
+  grid-area: progress;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: green;
+}
+
+.card-author {
+  grid-area: author;
+  display: flex;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.card-time {
+  grid-area: time;
+  justify-self: end;
+  font-size: 14px;
+  color: grey;
+}
