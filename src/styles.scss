@@ -5,6 +5,14 @@
   --text-primary: #242424;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background: var(--background-gray-dark-color);

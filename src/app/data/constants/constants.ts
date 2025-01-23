@@ -1,12 +1,4 @@
-export interface Card {
-  id: string;
-  title: string;
-  author: string;
-  avatarUrl: string;
-  progress: number;
-  status: 'done' | 'inProgress' | 'paused';
-  time: string;
-}
+import {Card, MenuItems} from '../interface/page.interface';
 
 export const mockCards: Card[] = [
   {
@@ -46,3 +38,27 @@ export const mockCards: Card[] = [
     time: '24ч'
   },
 ]
+
+export const menuItems: MenuItems[] = [
+  {
+    name: 'Главная',
+    path: '/',
+    icon: 'ic_rocket.svg',
+  },
+  {
+    name: 'Проекты',
+    path: '/projects',
+    icon: 'projects.svg',
+  },
+  { name: 'Команда', path: '/team', icon: 'team.svg' },
+  {
+    name: 'Канбан',
+    path: '/kanban',
+    icon: 'kanban.svg',
+  },
+  {
+    name: 'Итерации',
+    path: '/iteration',
+    icon: 'iteration.svg',
+  },
+];

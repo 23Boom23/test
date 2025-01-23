@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Card} from '../../data/interface/canban-card.interface';
+import {Card} from '../../data/interface/page.interface';
 
 @Component({
   selector: 'app-canban-card',
