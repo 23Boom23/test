@@ -4,13 +4,17 @@ export interface Card {
   author: string;
   avatarUrl: string;
   progress: number;
-  status: 'done' | 'inProgress' | 'paused';
+  status: 'inProgress' | 'done' | 'paused' | 'draft' | 'inReview' ;
   time: string;
+  assigned?: boolean;
+  product: string;
+  type: string;
+  inProgressCard?: boolean;
+  onPause?: boolean;
 }
 
 export interface MenuItems {
-  name: string,
-  path: string,
-  icon: string,
+  name: string;
+  path: string;
+  icon: string;
 }
-

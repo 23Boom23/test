@@ -1,15 +1,17 @@
-@if(card) {
+@if (card) {
+  <div class="test">
   <div class="kanban-card">
     <div class="card-title">{{ card.title }}</div>
     <div class="card-id">{{ card.id }}</div>
     <div class="card-progress">
-      <div class="progress-bar" [style.width.%]="card.progress"></div>
+      <app-progress-bar [progress]="card.progress"></app-progress-bar>
     </div>
     <div class="card-author">
-      <img [src]="card.avatarUrl" alt="Avatar" class="author-avatar">
+      <img [src]="card.avatarUrl" alt="Avatar" class="author-avatar" />
       <span class="author-name">{{ card.author }}</span>
     </div>
     <div class="card-time">{{ card.time }}</div>
+  </div>
   </div>
 } @else {
   Нет текущей задачи

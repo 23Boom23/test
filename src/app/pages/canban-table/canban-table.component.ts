@@ -1,41 +1,73 @@
-import { Component } from '@angular/core';
-import { CanbanCardComponent } from "../../common-ui/canban-card/canban-card.component";
-import { mockCards } from '../../data/constants/constants';
-import {FormsModule} from '@angular/forms';
-import {JsonPipe, NgForOf, NgIf} from '@angular/common';
-import {TuiDataListComponent} from '@taiga-ui/core';
-import {TuiAccordionDirective, TuiAccordionItem} from '@taiga-ui/kit';
-interface Task {
-  id: number;
-  title: string;
-  status: 'new' | 'in-progress' | 'resolved' | 'closed';
-  assignee: string;
-}
+import { Component, inject, OnInit } from '@angular/core';
+import { CanbanCardComponent } from '../../common-ui/canban-card/canban-card.component';
+import { FormsModule } from '@angular/forms';
+import { Card } from '../../data/interface/page.interface';
+import { DatePipe, NgForOf } from '@angular/common';
+import {allCards, categories, filteredOptions1, filteredOptions2, mockCards} from '../../data/constants/constants';
 
-const MOCK_DATA: Task[] = [
-  { id: 1, title: 'Develop new graph component', status: 'new', assignee: 'Vilgelimina Sh.' },
-  { id: 2, title: 'Fix layout issues on dashboard', status: 'in-progress', assignee: 'Vilgelimina Sh.' },
-  { id: 3, title: 'Implement export to CSV', status: 'resolved', assignee: 'Vilgelimina Sh.' },
-  { id: 4, title: 'Review pull request #42', status: 'closed', assignee: 'Vilgelimina Sh.' },
-];
 @Component({
   selector: 'app-canban-table',
-  imports: [
-    CanbanCardComponent,
-    FormsModule,
-    TuiAccordionItem,
-    TuiAccordionDirective,
-    JsonPipe,
-  ],
+  imports: [CanbanCardComponent, FormsModule, NgForOf],
   templateUrl: './canban-table.component.html',
-  styleUrl: './canban-table.component.scss'
+  styleUrl: './canban-table.component.scss',
 })
-export class CanbanTableComponent {
-  tasks = MOCK_DATA;
-  selectedTask?: Task | null = null;
+export class CanbanTableComponent implements OnInit {
+  currentDate: string | undefined;
+  categories = categories;
+  mockCards: Card[] = mockCards;
+  selectedStatusFilter: string = 'inProgress';
+  selectedProductFilter: string = 'allProducts';
+  selectedTypeFilter: string = 'all';
+  productFilterOptions  = filteredOptions1;
+  typeFilterOptions  = filteredOptions2;
+  filteredCards: Card[] = [];
+  assignedCards: Card[] = [];
+  unassignedCards: Card[] = [];
+  allCards: Card[] = allCards;
 
-  onTaskClick(task: Task) {
-    this.selectedTask = task;
+  private readonly datePipe = inject(DatePipe);
+
+
+
+  ngOnInit(): void {
+    const locale = 'ru';
+    this.currentDate = this.datePipe.transform(new Date(), 'EEEE, d MMMM', undefined, locale)!;
+    this.applyFilters();
   }
-  protected readonly mockCards = mockCards;
+
+  applyFilters(): void {
+    this.filteredCards = this.mockCards.filter((card) =>
+      (this.selectedProductFilter === 'allProducts' || card.product === this.selectedProductFilter) &&
+      (this.selectedTypeFilter === 'all' || card.type === this.selectedTypeFilter) &&
+      (this.selectedStatusFilter === 'all' || card.status === this.selectedStatusFilter)
+    );
+
+    this.assignedCards = this.filteredCards.filter((card) => card.assigned === true);
+    this.unassignedCards = this.filteredCards.filter((card) => card.assigned === false);
+  }
+
+  setFilter(status: string) :void {
+    this.selectedStatusFilter = status;
+    this.applyFilters();
+  }
+
+  getTaskCount(status: string) :number {
+    return this.mockCards.filter((card) => card.status === status).length;
+  }
+
+  capitalizeFirstLetterOfEachWord(str: string | undefined): string | undefined {
+    if (!str) return str;
+    return str
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  }
+
+  getAssignedCardCount(): number {
+    return this.filteredCards.filter((card) => card.assigned).length;
+  }
+
+  getUnassignedCardCount(): number {
+    return this.filteredCards.filter((card) => !card.assigned).length;
+  }
 }

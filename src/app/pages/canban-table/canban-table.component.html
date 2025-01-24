@@ -1,16 +1,98 @@
-<tui-accordion>
-  {{selectedTask | json}}
-  <tui-accordion-item>
-    <ng-template tuiItemContent>
-      <h3>{{ selectedTask?.title }}</h3>
-      <p>Status: {{ selectedTask?.status }}</p>
-      <p>Assignee: {{ selectedTask?.assignee }}</p>
-    </ng-template>
-  </tui-accordion-item>
-</tui-accordion>
+<div class="canban-table">
+  <div class="canban-table__status-filter">
+    <h2 class="canban-table__date">{{ capitalizeFirstLetterOfEachWord(currentDate) }}</h2>
+    <div class="canban-table__filter-controls">
+      <select class="canban-table__option-title" [(ngModel)]="selectedProductFilter" (change)="applyFilters()">
+        <option *ngFor="let option of productFilterOptions" [value]="option.value">
+<!--          <img [src]="option.icon" alt="{{ option.label }}" class="option-icon" />-->
+          <span>{{ option.label }}</span>
+        </option>
+      </select>
 
-<div>
-  @for (canbanCard of mockCards; track canbanCard.id) {
-    <app-canban-card [card]="canbanCard"></app-canban-card>
-  }
+      <select class="canban-table__option-title" [(ngModel)]="selectedTypeFilter" (change)="applyFilters()">
+        <option *ngFor="let option of typeFilterOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+    <div class="canban-table__status-menu">
+      @for (category of categories; track category.status) {
+      <div
+        class="canban-table__filter-item"
+        [class.canban-table__filter-item--active]="category.status === selectedStatusFilter"
+        (click)="setFilter(category.status)"
+      >
+        {{ category.name }}: {{ getTaskCount(category.status) }}
+      </div>
+      }
+    </div>
+    <div class="accordion" id="taskAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingMyTask">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseMyTask"
+            aria-expanded="true"
+            aria-controls="collapseMyTask">
+            Мои ({{ getAssignedCardCount() }})
+          </button>
+        </h2>
+        <div
+          id="collapseMyTask"
+          aria-labelledby="headingMyTask">
+          <div class="accordion-body">
+            <div class="kanban">
+              @for (card of filteredCards; track card.id) {
+                @if (card.assigned) {
+                  <app-canban-card [card]="card"></app-canban-card>
+                }
+              } @empty {
+                <p>Нету активных задач</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingNotMyTask">
+          <button
+            class="accordion-button collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseNotMyTask"
+            aria-expanded="false"
+            aria-controls="collapseNotMyTask">
+            Не назначенные ({{ getUnassignedCardCount() }})
+          </button>
+        </h2>
+        <div
+          id="collapseNotMyTask"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingNotMyTask">
+          <div class="accordion-body">
+            <div class="kanban">
+              @for (card of filteredCards; track card.id) {
+                @if (!card.assigned) {
+                  <app-canban-card [card]="card"></app-canban-card>
+                }
+              } @empty {
+                  <p>Нету активных задач</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="kanban-cards">
+    <div class="kanban-cards__background">
+    @for (card of allCards; track card.id) {
+      <app-canban-card [card]="card"></app-canban-card>
+    } @empty {
+      Нету активных задач
+    }
+    </div>
+  </div>
 </div>

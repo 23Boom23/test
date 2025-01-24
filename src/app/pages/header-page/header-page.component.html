@@ -1,0 +1,47 @@
+<div class="header-page">
+  <div class="header-page__navbar">
+    <ul class="header-page__menu">
+      @for (menu of menuItems; track menu.name) {
+        <li class="header-page__menu-item">
+          <a [routerLink]="menu.path" class="header-page__menu-link">
+            <img
+              [src]="'/assets/svg/' + menu.icon"
+              alt="{{ menu.name }} icon"
+              class="header-page__menu-icon"
+            />
+            <p class="header-page__text">{{ menu.name }}</p>
+          </a>
+        </li>
+      }
+      <button class="header-page__create-button">
+        <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="12" height="12">
+          <path d="M6 0v12M0 6h12" stroke="#16A4E3" stroke-width="2"/>
+        </svg>
+        Создать
+        <svg class="icon-arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="12" height="12">
+          <path d="M3 4l3 3 3-3" stroke="#7E7E7E" stroke-width="2" fill="none"/>
+        </svg>
+      </button>
+    </ul>
+  </div>
+  <div class="header-page__additional">
+    <div class="header-page__time">
+      <img src="/assets/svg/clock.svg" alt="clock" class="header-page__icon" />
+      <span class="header-page__time-text">{{ formattedTime }}</span>
+    </div>
+    <div class="header-page__status">
+      <img src="/assets/svg/bracket.svg" alt="bracket" class="header-page__icon" />
+      <span class="header-page__task" title="{{ postMessage }}">{{ postMessage }}</span>
+    </div>
+    <button class="header-page__notification-button">
+      <img src="/assets/svg/message.svg" alt="message-icon" class="header-page__notification-icon" />
+      <div class="header-page__notification-count">
+        <span class="header-page__notification-num">28</span>
+      </div>
+    </button>
+    <div class="header-page__avatar">
+      <img src="/assets/img/person.png" alt="avatar" class="header-page__avatar-image" />
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

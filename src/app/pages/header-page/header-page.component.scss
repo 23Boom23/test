@@ -1,0 +1,144 @@
+.header-page {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+
+  &__navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 5rem;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 5rem;
+
+    &-item {
+      margin-right: 8rem;
+      position: relative;
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -5.5rem;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: var(--divider);
+      }
+    }
+
+    &-link {
+      display: flex;
+     width: 5.6rem;
+    }
+
+    &-icon {
+    }
+  }
+  &__text {
+    margin-left: 1rem;
+    margin-bottom: 0;
+  }
+
+  &__create-button {
+    border: 1px solid var(--active_blue);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    color: var(--active_blue);
+    .icon-arrow-down {
+      color: #f0f0f0;
+    }
+    .icon-plus,
+    .icon-arrow-down {
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__additional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__time {
+    background-color: var(--active_blue);
+    color: #f1f2f4;
+  }
+
+  &__time, &__status, &__notification-button, &__avatar {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  &__time, &__status, &__notification-button {
+    margin-right: 1rem;
+    border: var(--box-shadow-new_shdw_card);
+    box-shadow: var(--box-shadow-new_shdw_card);
+    border-radius: 4px;
+  }
+
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.5rem;
+  }
+
+  &__time-text {
+    font-size: 1.5rem;
+  }
+
+  &__status {
+    flex-grow: 1;
+    margin-right: 1rem;
+    color: var(--text-text)
+  }
+
+  &__task {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 25rem;
+    display: inline-block;
+  }
+
+  &__notification-button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__notification-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &__notification-count {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  &__notification-num {
+    font-size: 1.2rem;
+  }
+
+  &__avatar-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+}

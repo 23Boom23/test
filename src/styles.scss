@@ -1,8 +1,28 @@
 @import "fonts";
 :root {
+  //background
   --background-gray-dark-color: #F1F2F4;
+  --bg_grayDark: #F1F2F4;
+  --bg_blocks: #F9FAFC;
+  --bg_fields: #F5F6F8;
+  --bg_menu: #FFFFFF;
   --border-card-color: rgba(0, 0, 0, 0.05);
+  --active_blue: #16A4E3;
+  //text
   --text-primary: #242424;
+  --text-text: #5E5E5E;
+  --text-secondary: #7E7E7E;
+  --text-service: #B0B0B0;
+  --link: #005BD1;
+  --link-visited: #528FDF;
+  --divider: #E0E0E0;
+  //shadow
+  --border-new_shdw_card: 1px solid rgba(38, 58, 91, 0.05);
+  --box-shadow-new_shdw_card: 0px 3px 10px 0px rgba(38, 58, 91, 0.05);
+  --border-shdw_modal: 0px -2px 6px 0px rgba(0, 7, 62, 0.05);
+  --box-shadow-shdw_modal: 0px 16px 32px 0px rgba(0, 7, 62, 0.08);
+  --border-shdw_menu: 0px 2px 6px 0px rgba(0, 7, 62, 0.05);
+  --box-shadow-shdw_menu: 0px 12px 24px 0px rgba(0, 7, 62, 0.10);
 }
 
 *,
@@ -13,8 +33,36 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: var(--text-secondary);
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--active_blue);
+  }
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background: var(--background-gray-dark-color);
   font-size: 14px;
+  line-height: 21px;
+}
+
+html {
+  font-size: 10px;
+  line-height: 10px;
+  margin-left: 60px;
+  margin-right: 40px;
+}
+
+button {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
 }
