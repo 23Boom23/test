@@ -13,11 +13,11 @@ import {DatePipe} from '@angular/common';
 export class HeaderPageComponent implements OnInit  {
   currentTime: Date = new Date();
   formattedTime: string = '';
-  private datePipe = inject(DatePipe);
+  private datePipe: DatePipe = inject(DatePipe);
   protected readonly menuItems = menuItems;
-  postMessage = 'Не отображается текст "Пока нет вопросов", если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса'
+  postMessage: string = 'Не отображается текст "Пока нет вопросов", если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса'
 
-  ngOnInit() {
+  ngOnInit(): void {
     setInterval(() => {
       this.currentTime = new Date();
       this.formattedTime = this.datePipe.transform(this.currentTime, 'hh:mm')!;

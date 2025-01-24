@@ -88,11 +88,23 @@
   </div>
   <div class="kanban-cards">
     <div class="kanban-cards__background">
-    @for (card of allCards; track card.id) {
-      <app-canban-card [card]="card"></app-canban-card>
-    } @empty {
-      Нету активных задач
-    }
+      @if (inProgressCards.length) {
+        <h3 class="title">В работе:</h3>
+        @for (card of inProgressCards; track card.id) {
+          <app-canban-card [card]="card"></app-canban-card>
+        }
+      }
+
+      @if (pausedCards.length) {
+        <h3 class="group-title">На паузе:</h3>
+        @for (card of pausedCards; track card.id) {
+          <app-canban-card [card]="card"></app-canban-card>
+        }
+      }
+      @if (!inProgressCards.length && !pausedCards.length) {
+        Нету активных задач
+      }
     </div>
   </div>
+  <app-mobile-menu></app-mobile-menu>
 </div>

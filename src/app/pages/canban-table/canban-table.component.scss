@@ -1,4 +1,25 @@
 .canban-table {
+
+  @media (max-width: 425px) {
+    display: grid;
+    grid-template-areas:
+      "kanban-cards"
+      "status-filter";
+    .canban-table__filter-item {
+      font-size: 10px;
+      display: block;
+      padding: 0;
+    }
+    .kanban-cards {
+      order: -1;
+    }
+
+    .canban-table__status-filter {
+      display: block;
+      margin-right: 0;
+      width: 100%;
+    }
+  }
   .canban-table__status-filter {
     display: flex;
     flex-direction: column;
@@ -13,11 +34,20 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-
+  @media (max-width: 425px) {
+    .canban-table__date {
+      display: none;
+    }
+    .canban-table__filter-item{
+      font-size: 1.2rem;
+      padding: 0;
+    }
+  }
   .canban-table__status-menu {
     display: flex;
     margin-bottom: 2rem;
     border-bottom: 1px solid var(--divider);
+
 
     .canban-table__filter-item {
       cursor: pointer;
@@ -54,7 +84,11 @@
     box-shadow: var(--box-shadow-shdw_menu);
     border-radius: 0.2rem;
   }
-
+  @media (max-width: 425px) {
+    .canban-table__filter-controls > select {
+      display: none;
+    }
+  }
   .canban-table__option-title {
     color: var(--text-text);
     line-height: 2rem;
@@ -76,6 +110,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 425px) {
+    display: grid;
+  }
 }
 
 .canban-table__status-filter {
@@ -110,6 +147,10 @@ app-canban-card:hover {
   transform: translateY(-0.5rem);
 }
 
+.accordion-button {
+  font-size: 1.8rem;
+}
+
 .accordion-button:not(.collapsed) {
   background-color: var(--bg_grayDark);
 }
@@ -137,4 +178,27 @@ app-canban-card:hover {
 
 .accordion-body {
   padding: var(--text-text) var(--text-text);
+}
+
+.in-progress {
+  background-color: var(--bg-blue);
+}
+
+.on-pause {
+  background-color: var(--bg_grayDark);
+}
+
+.title {
+  background-color: var(--bg-blue);
+  padding-left: 10px;
+  padding-top: 10px;
+  margin: 0;
+  @media (max-width: 425px) {
+    background-color: var(--bg_grayDark);
+  }
+}
+
+.group-title {
+  padding-top: 10px;
+  padding-left: 10px;
 }

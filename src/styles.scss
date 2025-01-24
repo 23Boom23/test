@@ -6,6 +6,7 @@
   --bg_blocks: #F9FAFC;
   --bg_fields: #F5F6F8;
   --bg_menu: #FFFFFF;
+  --bg-blue: #EFFAFF;
   --border-card-color: rgba(0, 0, 0, 0.05);
   --active_blue: #16A4E3;
   //text
@@ -38,7 +39,6 @@ a {
   color: var(--text-secondary);
 
   &:hover {
-    text-decoration: underline;
     color: var(--active_blue);
   }
 }
@@ -46,6 +46,7 @@ a {
 ul[class],
 ol[class] {
   list-style: none;
+  &:hover {}
 }
 
 body {
@@ -60,9 +61,41 @@ html {
   line-height: 10px;
   margin-left: 60px;
   margin-right: 40px;
+  @media (max-width: 425px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 button {
   font-family: "Inter", sans-serif;
   font-weight: 500;
+}
+
+$laptop-width: 1440px;
+$small-laptop: 1024px;
+$tablet: 768px;
+$mobile: 425px;
+@mixin laptop-l {
+  @media (max-width: $laptop-width) {
+    @content
+  }
+}
+
+@mixin laptop-sm {
+  @media (max-width: $small-laptop) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content
+  }
 }

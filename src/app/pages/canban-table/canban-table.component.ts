@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Card } from '../../data/interface/page.interface';
 import { DatePipe, NgForOf } from '@angular/common';
 import {allCards, categories, filteredOptions1, filteredOptions2, mockCards} from '../../data/constants/constants';
+import {MobileMenuComponent} from '../../common-ui/menu-mobile/mobile-menu.component';
 
 @Component({
   selector: 'app-canban-table',
-  imports: [CanbanCardComponent, FormsModule, NgForOf],
+  imports: [CanbanCardComponent, FormsModule, NgForOf, MobileMenuComponent],
   templateUrl: './canban-table.component.html',
   styleUrl: './canban-table.component.scss',
 })
@@ -28,6 +29,13 @@ export class CanbanTableComponent implements OnInit {
   private readonly datePipe = inject(DatePipe);
 
 
+  get inProgressCards(): Card[] {
+    return this.allCards.filter(card => card.inProgressCard);
+  }
+
+  get pausedCards(): Card[] {
+    return this.allCards.filter(card => card.onPause);
+  }
 
   ngOnInit(): void {
     const locale = 'ru';

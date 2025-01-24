@@ -1,5 +1,5 @@
 .kanban-card {
-  height: 10rem;
+  height: 12rem;
   margin: 1rem;
   padding: 1rem;
   display: grid;
@@ -39,6 +39,7 @@
 }
 
 .card-author {
+  margin-top: 1.2rem;
   grid-area: author;
   display: flex;
   align-items: center;
@@ -53,12 +54,56 @@
 
 .card-time {
   grid-area: time;
-  justify-self: end;
   font-size: 14px;
-  color: grey;
+  margin-left: auto;
 }
 
-.test {
+.card {
   padding: 0.1rem;
-  background-color: var(--bg_blocks)  ;
+  background-color: var(--bg_blocks);
+  border: none;
+  @media (max-width: 425px) {
+   width: 270px;
+  }
+}
+
+.card.in-progress {
+  background-color: var(--bg-blue);
+}
+
+.card.on-pause {
+  background-color: var(--bg_grayDark);
+}
+
+.canban-card-title {
+  padding: 1rem;
+}
+
+.kanban-card {
+  position: relative;
+  @media (max-width: 425px) {
+    height: 16rem;
+  }
+}
+
+.canban-buttons-container {
+  display: inline-block;
+  flex: 1 1 auto;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .canban-buttons-container {
+  opacity: 1;
+}
+
+.icon-work {
+  margin-right: 1rem;
+}
+
+.card-title {
+  min-height: 2rem;
+}
+
+.card-icon {
+  margin-right: 1rem;
 }

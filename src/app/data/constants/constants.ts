@@ -255,6 +255,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'option3',
     type: 'errors',
+    onPause: true,
   },
   {
     id: '4',
@@ -267,6 +268,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'allProducts',
     type: 'common',
+    onPause: true,
   },
   {
     id: '5',
@@ -279,6 +281,7 @@ export const allCards: Card[] = [
     assigned: true,
     product: 'option2',
     type: 'test',
+    onPause: true,
   },
   {
     id: '6',
@@ -291,6 +294,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'option3',
     type: 'errors',
+    onPause: true,
   },
   {
     id: '7',
@@ -303,6 +307,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'allProducts',
     type: 'common',
+    onPause: true,
   },
   {
     id: '8',
@@ -315,6 +320,7 @@ export const allCards: Card[] = [
     assigned: true,
     product: 'option2',
     type: 'test',
+    onPause: true,
   },
   {
     id: '9',
@@ -327,6 +333,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'option3',
     type: 'errors',
+    onPause: true,
   },
   {
     id: '10',
@@ -339,6 +346,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'allProducts',
     type: 'common',
+    onPause: true,
   },
   {
     id: '11',
@@ -351,6 +359,7 @@ export const allCards: Card[] = [
     assigned: true,
     product: 'option2',
     type: 'test',
+    onPause: true,
   },
   {
     id: '12',
@@ -363,6 +372,7 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'option3',
     type: 'errors',
+    onPause: true,
   },
   {
     id: '13',
@@ -375,5 +385,6 @@ export const allCards: Card[] = [
     assigned: false,
     product: 'allProducts',
     type: 'common',
+    onPause: true,
   },
 ];

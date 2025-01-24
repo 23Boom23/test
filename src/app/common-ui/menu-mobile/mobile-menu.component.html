@@ -1,0 +1,34 @@
+<div class="mobile-tab-bar">
+  <ul class="mobile-tab-bar__list">
+    <li
+      class="mobile-tab-bar__item"
+      *ngFor="let item of menuItems"
+    >
+      <img
+        [src]="'/assets/svg/' + item.icon"
+        [alt]="item.label"
+        class="mobile-tab-bar__icon"
+      />
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active-route"
+        ariaCurrentWhenActive="page"
+        class="mobile-tab-bar__link"
+      >
+      </a>
+
+      <div
+        *ngIf="showNotification(item.label)"
+        class="notification-count"
+        [ngClass]="{
+          'team-notification': item.label === 'Team',
+          'message-notification': item.label === 'Messages'
+        }"
+      >
+        <span class="notification-count__num">
+          {{ getNotificationCount(item.label) }}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
