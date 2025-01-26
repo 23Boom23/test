@@ -1,0 +1,71 @@
+.kanban-buttons {
+  &__task-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__action-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  &__action-button i {
+    margin-right: 8px;
+  }
+
+  &__action-button:hover {
+    opacity: 0.9;
+  }
+}
+
+.fix-button {
+  flex-grow: 1.2;
+  background-color: var(--fix-button_bg);
+  color: var(--red);
+  &:hover {
+    background-color: var(--fix-button_bg-hover);
+  }
+}
+
+.work-button {
+  flex-grow: 3;
+  background-color: var(--work-button_bg);
+  color: var(--active_blue);
+  &:hover {
+    background-color: var(--work-button_bg-hover);
+  }
+}
+
+.accept-button {
+  flex-grow: 1.2;
+  background-color: var(--accept-button_bg);
+  color: var(--green);
+  &:hover {
+    background-color: var(--accept-button_bg-hover);
+  }
+}
+
+.pause-button {
+  flex-grow: 1.2;
+  background-color: #e2e3e5;
+  color: #6c757d;
+}
+
+.done-button {
+  flex-grow: 1.2;
+  background-color: #d4edda;
+  color: #1bba69;
+  &:hover {
+    background-color: #d1f1e1;
+  }
+}

@@ -1,0 +1,46 @@
+<div class="card" (mouseleave)="handleMouseLeave()" [ngClass]="{
+  'in-progress': card?.inProgressCard,
+  'on-pause': card?.onPause
+}" >
+  <div class="kanban-card">
+    @if (!showTitle) {
+      <div class="card-title" (mouseenter)="onMouseEnterOnTitle()">
+        <i class="card-icon">
+          <svg icon="card_icon"></svg>
+        </i>
+        {{ card.title }}</div>
+    } @else {
+      <app-kanban-tittle [title]="card.title" class="card-title"></app-kanban-tittle>
+    }
+
+    <div class="card-id">{{ card.id }}</div>
+
+    <div *ngIf="!showButtons">
+      <div class="card-progress" (mouseenter)="handleMouseEnter()">
+        <app-kanban-progress-bar [progress]="card.progress"></app-kanban-progress-bar>
+      </div>
+
+      <div class="card-author" (mouseenter)="handleMouseEnter()">
+        <i class="icon-work">
+          <svg icon="card_work"></svg>
+        </i>
+        <img [src]="card.avatarUrl" alt="Avatar" class="author-avatar" />
+        <span class="author-name">{{ card.author }}</span>
+        <div class="card-time" (mouseenter)="handleMouseEnter()">
+         <i>
+           <svg icon="card_time"></svg>
+         </i> {{ card.time }}
+        </div>
+      </div>
+    </div>
+
+    <div class="kanban-buttons-container" *ngIf="showButtons">
+      <app-kanban-buttons
+        [showFixButton]="true"
+        [showWorkButton]="true"
+        [showAcceptButton]="true">
+      </app-kanban-buttons>
+    </div>
+  </div>
+</div>
+

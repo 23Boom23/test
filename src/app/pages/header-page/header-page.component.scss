@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1.6rem;
+
   &__navbar {
     display: flex;
     flex-direction: row;
@@ -9,7 +10,7 @@
     margin-right: 5rem;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 120rem) {
     font-size: 12px;
     flex-direction: column;
     .header-page__additional {
@@ -17,22 +18,27 @@
     }
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 42.5rem) {
     display: grid;
     flex-direction: column;
+
     .header-page__additional {
       display: none;
     }
+
     .header-page__menu-item {
       margin: 0;
       padding: 0;
     }
+
     .header-page__text {
       display: none;
     }
+
     .header-page__menu {
     display: none;
     }
+
     .header-page__create-button {
       display: none;
     }
@@ -54,34 +60,38 @@
         right: -5.5rem;
         top: 0;
         bottom: 0;
-        width: 1px;
+        width: 0.1rem;
         background-color: var(--divider);
       }
     }
+    &-icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-right: 1rem;
+    }
 
     &-link {
-      display: flex;
-     width: 5.6rem;
+    display: flex;
+    align-items: center;
     }
+  }
 
-    &-icon {
-    }
-  }
   &__text {
-    margin-left: 1rem;
-    margin-bottom: 0;
+    margin: 0;
   }
+
   &__create-button {
     border: 1px solid var(--active_blue);
-    display: inline-flex;
     align-items: center;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
     cursor: pointer;
     color: var(--active_blue);
+
     .icon-arrow-down {
       color: #f0f0f0;
     }
+
     .icon-plus,
     .icon-arrow-down {
       margin: 0 0.5rem;
@@ -96,7 +106,7 @@
 
   &__time {
     background-color: var(--active_blue);
-    color: #f1f2f4;
+    color: var(--bg_grayDark);
   }
 
   &__time, &__status, &__notification-button, &__avatar {
@@ -113,8 +123,8 @@
   }
 
   &__icon {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.6rem;
+    height: 1.6rem;
     margin-right: 0.5rem;
   }
 
@@ -144,16 +154,16 @@
   }
 
   &__notification-icon {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
   &__notification-count {
     position: absolute;
-    top: -0.5rem;
-    right: -0.5rem;
-    background-color: red;
-    color: white;
+    top: -1.6rem;
+    right: -1.2rem;
+    background-color: var(--red);
+    color: var(--bg_menu);
     border-radius: 50%;
     padding: 0 0.5rem;
     font-size: 1.2rem;
@@ -164,8 +174,8 @@
   }
 
   &__avatar-image {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
   }
 }

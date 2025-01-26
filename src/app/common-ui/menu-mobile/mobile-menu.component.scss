@@ -1,15 +1,14 @@
-.mobile-tab-bar {
+.mobile-menu {
   display: none;
-  @media (max-width: 425px) {
+  @media (max-width: 42.5rem) {
     display: flex;
-    width: 280px;
-    height: 60px;
-    gap: 4px;
-    padding: 0 16px;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    box-shadow: 0px 12px 24px rgba(0, 7, 62, 0.1);
+    width: 24rem;
+    height: 6rem;
+    gap: 0.4rem;
+    padding: 0 1.6rem;
+    border-radius: 3rem;
+    background-color: var(--border-shdw_menu);
+    box-shadow: var(--box-shadow-shdw_menu);
 
     &__list {
       display: flex;
@@ -20,16 +19,16 @@
     }
 
     &__item {
-      width: 80px;
-      height: 60px;
-      padding: 10px;
+      width: 8rem;
+      height: 6rem;
+      padding: 1rem;
       text-align: center;
       position: relative;
     }
 
     &__icon {
-      width: 20px;
-      height: 20px;
+      width: 2rem;
+      height: 2rem;
     }
 
     &__link {
@@ -37,27 +36,29 @@
       height: 100%;
     }
   }
+
+  .notification-count {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+
+    &__num {
+      color: var(--white);
+    }
+
+    &.team-notification {
+      background-color: var(--active_blue);
+    }
+
+    &.message-notification {
+      background-color: var(--red);
+    }
+  }
 }
 
-.notification-count {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  padding: 2px 6px;
-  border-radius: 16px;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 16px;
 
-  &__num {
-    color: white;
-  }
-
-  &.team-notification {
-    background-color: var(--active_blue);
-  }
-
-  &.message-notification {
-    background-color: red;
-  }
-}

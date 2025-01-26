@@ -1,40 +1,41 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import {SvgIcon} from '../svg/svg-icon.component';
 
 interface MenuItem {
   label: string;
-  route: string;
+  link: string;
   icon: string;
 }
 
 @Component({
   selector: 'app-mobile-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, SvgIcon],
   templateUrl: './mobile-menu.component.html',
   styleUrls: ['./mobile-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MobileMenuComponent {
-  public teamNotifications: number = 16;
-  public messageNotifications: number = 8;
+  public readonly teamNotificationsNumber: number = 16;
+  public readonly messageNotificationsNumber: number = 8;
 
   protected readonly menuItems: MenuItem[] = [
-    { label: 'Rocket', route: '/team', icon: 'ic_rocket.svg' },
-    { label: 'Home', route: '/home', icon: 'team.svg' },
-    { label: 'Messages', route: '/messages', icon: 'message.svg' },
+    { label: 'Rocket', link: '', icon: 'rocket' },
+    { label: 'Home', link: '', icon: 'team' },
+    { label: 'Messages', link: '', icon: 'message' },
   ];
 
-  public showNotification(label: string): boolean {
+  public showNotification (label: string): boolean {
     return label === 'Team' || label === 'Messages';
   }
 
-  public getNotificationCount(label: string): number {
+  public getNotificationCount (label: string): number {
     if (label === 'Team') {
-      return this.teamNotifications;
+      return this.teamNotificationsNumber;
     } else if (label === 'Messages') {
-      return this.messageNotifications;
+      return this.messageNotificationsNumber;
     }
     return 0;
   }

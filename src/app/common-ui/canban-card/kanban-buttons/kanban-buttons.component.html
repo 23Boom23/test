@@ -1,0 +1,41 @@
+<div class="kanban-buttons__task-actions">
+  @if (showFixButton) {
+    <button class="kanban-buttons__action-button fix-button">
+      <i class="icon-fix">
+        <svg icon="icon_fix"></svg>
+      </i> Исправить
+    </button>
+  }
+
+  @if (showWorkButton) {
+    <button class="kanban-buttons__action-button work-button">
+      <i class="icon-work">
+        <svg icon="icon_work"></svg>
+      </i> В работу
+    </button>
+  }
+
+  @if (showAcceptButton) {
+    <button class="kanban-buttons__action-button accept-button">
+      <i class="icon-accept">
+        <svg icon="icon_accept"></svg>
+      </i> Принять
+    </button>
+  }
+
+  @if (showPauseButton) {
+    <button class="kanban-buttons__action-button pause-button">
+      <i class="icon-pause">
+        <svg icon="icon_pause"></svg>
+      </i> На паузу
+    </button>
+  }
+
+  @if(showDoneButton) {
+    <button class="kanban-buttons__action-button done-button">
+      <i class="icon-done">
+        <svg icon="icon_done"></svg>
+      </i> Готово
+    </button>
+  }
+</div>

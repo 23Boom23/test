@@ -1,34 +1,31 @@
-<div class="mobile-tab-bar">
-  <ul class="mobile-tab-bar__list">
-    <li
-      class="mobile-tab-bar__item"
-      *ngFor="let item of menuItems"
-    >
-      <img
-        [src]="'/assets/svg/' + item.icon"
-        [alt]="item.label"
-        class="mobile-tab-bar__icon"
-      />
-      <a
-        [routerLink]="item.route"
-        routerLinkActive="active-route"
-        ariaCurrentWhenActive="page"
-        class="mobile-tab-bar__link"
+<div class="mobile-menu">
+  <ul class="mobile-menu__list">
+    @for(menuItem of menuItems; track menuItem) {
+      <li
+        class="mobile-menu__item"
       >
-      </a>
-
-      <div
-        *ngIf="showNotification(item.label)"
-        class="notification-count"
-        [ngClass]="{
-          'team-notification': item.label === 'Team',
-          'message-notification': item.label === 'Messages'
+        <svg [icon]="menuItem.icon"  class="mobile-menu__icon"></svg>
+        <a
+          [routerLink]="menuItem.link"
+          routerLinkActive="active-route"
+          ariaCurrentWhenActive="page"
+          class="mobile-menu__link"
+        >
+        </a>
+        @if (showNotification(menuItem.label)) {
+          <div
+            class="mobile-menu__notification-count"
+            [ngClass]="{
+          'team-notification': menuItem.label === 'Team',
+          'message-notification': menuItem.label === 'Messages'
         }"
-      >
-        <span class="notification-count__num">
-          {{ getNotificationCount(item.label) }}
+          >
+        <span class="mobile-menu__notification-count__num">
+          {{ getNotificationCount(menuItem.label) }}
         </span>
-      </div>
-    </li>
+          </div>
+        }
+      </li>
+    }
   </ul>
 </div>

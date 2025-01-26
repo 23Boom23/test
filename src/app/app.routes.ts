@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 import { HeaderPageComponent } from './pages/header-page/header-page.component';
-import { CanbanTableComponent } from './pages/canban-table/canban-table.component';
+import { KanbanTableComponent } from './pages/kanban-table/kanban-table.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'main-page',
     component: HeaderPageComponent,
-    children: [{ path: '', component: CanbanTableComponent }],
+    children: [{ path: '', component: KanbanTableComponent }],
   },
+  { path: '',  redirectTo: 'main-page', pathMatch: 'full' },
+  { path: '**', component: HeaderPageComponent },
 ];

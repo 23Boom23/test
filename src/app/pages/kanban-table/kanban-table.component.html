@@ -1,0 +1,109 @@
+<div class="kanban-table">
+  <div class="kanban-table__status-filter">
+    <h2 class="kanban-table__date">{{ capitalizeFirstLetterOfEachWord(currentDate) }}</h2>
+    <div class="kanban-table__filter-controls">
+      <select class="kanban-table__option-title" [(ngModel)]="selectedProductFilter" (change)="applyFilters()">
+        <option *ngFor="let option of productFilterOptions" [value]="option.value">
+          <span>{{ option.label }}</span>
+        </option>
+      </select>
+
+      <select class="kanban-table__option-title" [(ngModel)]="selectedTypeFilter" (change)="applyFilters()">
+        <option *ngFor="let option of typeFilterOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+    <div class="kanban-table__status-menu">
+      @for (category of categories; track category.status) {
+      <div
+        class="kanban-table__filter-item"
+        [class.canban-table__filter-item--active]="category.status === selectedStatusFilter"
+        (click)="setFilter(category.status)"
+      >
+        {{ category.name }}: {{ getTaskCount(category.status) }}
+      </div>
+      }
+    </div>
+    <div class="accordion" id="taskAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingMyTask">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseMyTask"
+            aria-expanded="true"
+            aria-controls="collapseMyTask">
+            Мои ({{ getAssignedCardCount() }})
+          </button>
+        </h2>
+        <div
+          id="collapseMyTask"
+          aria-labelledby="headingMyTask">
+          <div class="accordion-body">
+            <div class="kanban">
+              @for (card of filteredCards; track card.id) {
+                @if (card.assigned) {
+                  <app-kanban-card [card]="card"></app-kanban-card>
+                }
+              } @empty {
+                <p>Нету активных задач</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingNotMyTask">
+          <button
+            class="accordion-button collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseNotMyTask"
+            aria-expanded="false"
+            aria-controls="collapseNotMyTask">
+            Не назначенные ({{ getUnassignedCardCount() }})
+          </button>
+        </h2>
+        <div
+          id="collapseNotMyTask"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingNotMyTask">
+          <div class="accordion-body">
+            <div class="kanban">
+              @for (card of filteredCards; track card.id) {
+                @if (!card.assigned) {
+                  <app-kanban-card [card]="card"></app-kanban-card>
+                }
+              } @empty {
+                  <p>Нету активных задач</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="kanban-cards">
+    <div class="kanban-cards__background">
+      @if (inProgressCards.length) {
+        <h3 class="title">В работе:</h3>
+        @for (card of inProgressCards; track card.id) {
+          <app-kanban-card [card]="card"></app-kanban-card>
+        }
+      }
+
+      @if (pausedCards.length) {
+        <h3 class="group-title">На паузе:</h3>
+        @for (card of pausedCards; track card.id) {
+          <app-kanban-card [card]="card"></app-kanban-card>
+        }
+      }
+      @if (!inProgressCards.length && !pausedCards.length) {
+        Нету активных задач
+      }
+    </div>
+  </div>
+  <app-mobile-menu></app-mobile-menu>
+</div>

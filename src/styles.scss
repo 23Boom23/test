@@ -1,14 +1,12 @@
 @import "fonts";
 :root {
   //background
-  --background-gray-dark-color: #F1F2F4;
   --bg_grayDark: #F1F2F4;
   --bg_blocks: #F9FAFC;
   --bg_fields: #F5F6F8;
   --bg_menu: #FFFFFF;
   --bg-blue: #EFFAFF;
   --border-card-color: rgba(0, 0, 0, 0.05);
-  --active_blue: #16A4E3;
   //text
   --text-primary: #242424;
   --text-text: #5E5E5E;
@@ -24,6 +22,26 @@
   --box-shadow-shdw_modal: 0px 16px 32px 0px rgba(0, 7, 62, 0.08);
   --border-shdw_menu: 0px 2px 6px 0px rgba(0, 7, 62, 0.05);
   --box-shadow-shdw_menu: 0px 12px 24px 0px rgba(0, 7, 62, 0.10);
+  // colors
+  --active_blue: #16A4E3;
+  --red: #CE0000;
+  --green: #1BBA69;
+  --orange: #FF9000;
+  --white: #FFFFFF;
+  --black: #000000;
+  //bugs
+  --bug_blocked: #FF0000;
+  --bug_critical: #A90C26;
+  --bug_major: #ED4E4E;
+  --bug_minor: #FF7002;
+  --bug_trivial: #B0B0B0;
+  //buttons
+  --fix-button_bg: #fdf2f2;
+  --fix-button_bg-hover: #f5cccc;
+  --work-button_bg: #f3fafe;
+  --work-button_bg-hover: #d0edf9;
+  --accept-button_bg: #f4fcf8;
+  --accept-button_bg-hover: #d1f1e1;
 }
 
 *,
@@ -46,12 +64,11 @@ a {
 ul[class],
 ol[class] {
   list-style: none;
-  &:hover {}
 }
 
 body {
   font-family: "Inter", sans-serif;
-  background: var(--background-gray-dark-color);
+  background: var(--bg_grayDark);
   font-size: 14px;
   line-height: 21px;
 }
@@ -72,30 +89,7 @@ button {
   font-weight: 500;
 }
 
-$laptop-width: 1440px;
-$small-laptop: 1024px;
-$tablet: 768px;
-$mobile: 425px;
-@mixin laptop-l {
-  @media (max-width: $laptop-width) {
-    @content
-  }
-}
-
-@mixin laptop-sm {
-  @media (max-width: $small-laptop) {
-    @content
-  }
-}
-
-@mixin tablet {
-  @media (max-width: $tablet) {
-    @content
-  }
-}
-
-@mixin mobile {
-  @media (max-width: $mobile) {
-    @content
-  }
+svg {
+  width: 16px;
+  height: 16px;
 }
